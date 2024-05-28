@@ -67,7 +67,7 @@ const Graph = ({ data }) => {
         </div>
       </div>
       <div className="botg">
-        <BarChart width={600} height={300} data={filteredData}>
+        <BarChart width={600} height={300} data={filteredData} className="bar">
           <XAxis dataKey="date" stroke="#8884d8" />
           <YAxis domain={[0, 9]} tickCount={10} />
           <Tooltip wrapperStyle={{ width: 100, backgroundColor: "#ccc" }} />

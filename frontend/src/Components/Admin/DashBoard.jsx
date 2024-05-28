@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineMenu } from "react-icons/md";
 import Graph from "./Graph";
 
 const DashBoard = () => {
   const [data, setData] = useState([]);
   const [showGraph, setShowGraph] = useState(false);
+  const [showMenu, setShowMenu] = useState(false); // State to control menu visibility
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://startoons-labs.onrender.com/users");
+        const response = await fetch(
+          "https://startoons-labs.onrender.com/users"
+        );
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -22,11 +26,12 @@ const DashBoard = () => {
 
   const filteredData = data.filter((item) => item.role === "user");
   const auth = localStorage.getItem("user");
- const navigate=useNavigate();
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
     navigate("/");
   };
+
   return (
     <>
       <div className="header">
@@ -35,6 +40,17 @@ const DashBoard = () => {
           <p onClick={() => setShowGraph(true)}>Graph</p>
           <p onClick={logout}>Logout</p>
         </div>
+        <div className="sz" onClick={() => setShowMenu(!showMenu)}>
+          <MdOutlineMenu size={30} />
+          {showMenu && (
+            <div className="menu-items">
+              <p onClick={() => {setShowGraph(false); setShowMenu(false)}}>Home</p>
+              <p onClick={() => {setShowGraph(true); setShowMenu(false)}}>Graph</p>
+              <p onClick={logout}>Logout</p>
+            </div>
+          )}
+        </div>
+
         <div className="rht">
           <input type="text" />
           <button>Search</button>
