@@ -154,13 +154,13 @@ button {
 
 .dashboard-table {
     margin-top: 20px;
-    width: 90%;
+    width: auto;
     border-collapse: collapse;
 }
 
 .dashboard-table th,
 .dashboard-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #121111;
     padding: 8px;
     text-align: center;
 }
