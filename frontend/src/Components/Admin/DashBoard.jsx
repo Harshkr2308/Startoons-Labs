@@ -6,7 +6,7 @@ import Graph from "./Graph";
 const DashBoard = () => {
   const [data, setData] = useState([]);
   const [showGraph, setShowGraph] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); // State to control menu visibility
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +25,7 @@ const DashBoard = () => {
   }, []);
 
   const filteredData = data.filter((item) => item.role === "user");
-  const auth = localStorage.getItem("user");
+
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
@@ -44,8 +44,22 @@ const DashBoard = () => {
           <MdOutlineMenu size={30} />
           {showMenu && (
             <div className="menu-items">
-              <p onClick={() => {setShowGraph(false); setShowMenu(false)}}>Home</p>
-              <p onClick={() => {setShowGraph(true); setShowMenu(false)}}>Graph</p>
+              <p
+                onClick={() => {
+                  setShowGraph(false);
+                  setShowMenu(false);
+                }}
+              >
+                Home
+              </p>
+              <p
+                onClick={() => {
+                  setShowGraph(true);
+                  setShowMenu(false);
+                }}
+              >
+                Graph
+              </p>
               <p onClick={logout}>Logout</p>
             </div>
           )}
@@ -61,7 +75,7 @@ const DashBoard = () => {
           <Graph data={filteredData} />
         ) : (
           <table className="dashboard-table">
-            <thead style={{ backgroundColor: "skyblue" }}>
+            <thead>
               <tr>
                 <th>S.No</th>
                 <th>Name</th>

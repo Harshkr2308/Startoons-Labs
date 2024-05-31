@@ -10,8 +10,8 @@ import {
 } from "recharts";
 
 const Graph = ({ data }) => {
-  const [viewBy, setViewBy] = useState("date"); // state to toggle between 'date' and 'month'
-  const [selectedOption, setSelectedOption] = useState(""); // state to store the selected date or month
+  const [viewBy, setViewBy] = useState("date");
+  const [selectedOption, setSelectedOption] = useState(""); 
 
   const formatData = (viewBy) => {
     if (viewBy === "date") {
